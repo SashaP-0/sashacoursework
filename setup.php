@@ -1,1 +1,2 @@
-S
+h
+echo("help")
