@@ -11,9 +11,10 @@ $conn->exec("CREATE DATABASE IF NOT EXISTS BakeryDB");
 $conn->exec("USE BakeryDB");
 
 // Drop tables in correct order (respecting foreign key constraints)
+// Drop child tables first, then parent tables
 $conn->exec("DROP TABLE IF EXISTS tblreviews");
-$conn->exec("DROP TABLE IF EXISTS tblorders");
 $conn->exec("DROP TABLE IF EXISTS tblbasket");
+$conn->exec("DROP TABLE IF EXISTS tblorders");
 $conn->exec("DROP TABLE IF EXISTS tblitems");
 $conn->exec("DROP TABLE IF EXISTS tblusers");
 $conn->exec("DROP TABLE IF EXISTS tblpostcodes");
@@ -136,32 +137,23 @@ $conn->exec("INSERT INTO tblcategories (categoryname, description, displayorder)
 
 // Insert sample delivery areas
 $conn->exec("INSERT INTO tblareas (deliveryarea, areaname, deliveryprice, delivertype, deliveryday) VALUES 
-(1, 'Oundle Local', 2.50, 2, 3),
-(2, 'Oundle Extended', 3.50, 2, 3),
-(3, 'Market Pickup', 0.00, 1, 5),
-(4, 'Barnwell', 4.00, 2, 6)");
+(1, 'Local', 2.50, 1, 5),
+(2, 'Extended', 5.00, 2, 7)");
 
 // Insert sample postcodes
 $conn->exec("INSERT INTO tblpostcodes (postcode, deliveryarea) VALUES 
-('PE8 4', 1),
-('PE8 5', 1),
-('PE8 6', 2),
-('CB23 7', 4),
-('Market', 3)");
+('AB12 3CD', 1),
+('EF34 5GH', 2)");
 
 // Insert sample admin user
 $conn->exec("INSERT INTO tblusers (username, password, forename, surname, email, addressline, postcode, deliveryarea, phonenumber, role, dob) VALUES 
-('admin', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Mark', 'Dunn', 'mark@villagegrocers.com', 'Market Stall', 'Market', 3, '01234567890', 1, '1980-01-01')");
+('admin', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Admin', 'User', 'admin@bakery.com', '1 Main St', 'AB12 3CD', 1, '01234567890', 1, '1990-01-01')");
 
 // Insert sample items
 $conn->exec("INSERT INTO tblitems (itemname, stock, itemprice, image, categoryID, dietryrequirements, description) VALUES 
-('Sourdough Bread', 20, 3.50, 'sourdough.jpg', 1, 'Vegan', 'Traditional sourdough loaf made with local flour.'),
-('Wholemeal Bread', 15, 3.00, 'wholemeal.jpg', 1, 'Vegan', 'Nutritious wholemeal bread.'),
-('Chocolate Cupcake', 50, 1.20, 'cupcake.jpg', 2, 'Vegetarian', 'Vanilla cupcake with chocolate icing.'),
-('Carrot Cake', 30, 2.50, 'carrot_cake.jpg', 2, 'Vegetarian', 'Moist carrot cake with cream cheese frosting.'),
-('Semi-Skimmed Milk', 40, 1.80, 'milk.jpg', 3, 'Vegetarian', 'Fresh local milk from Granny Smith Farm.'),
-('Local Honey', 25, 4.50, 'honey.jpg', 4, 'Vegan', 'Pure local honey from nearby apiaries.'),
-('Strawberry Jam', 20, 3.20, 'jam.jpg', 4, 'Vegan', 'Homemade strawberry jam using local berries.')");
+('Sourdough Bread', 20, 3.50, 'sourdough.jpg', 1, 'Vegan', 'Traditional sourdough loaf.'),
+('Cupcake', 50, 1.20, 'cupcake.jpg', 2, 'Vegetarian', 'Vanilla cupcake with icing.'),
+('Brownie', 30, 2.00, 'brownie.jpg', 2, 'Gluten-Free', 'Rich chocolate brownie.')");
 
 echo "Database setup complete! All tables created with sample data.";
 ?>
