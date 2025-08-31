@@ -1,0 +1,44 @@
+# PHP specific
+*.log
+*.cache
+*.tmp
+*.swp
+*.swo
+*~
+
+# Composer
+/vendor/
+composer.phar
+composer.lock
+
+# Environment files
+.env
+.env.local
+.env.production
+
+# IDE files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Database files
+*.sql
+*.db
+
+# Upload directories
+uploads/
+images/
+
+# Configuration files with sensitive data
+config.php
+database.php
