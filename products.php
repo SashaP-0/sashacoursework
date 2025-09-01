@@ -55,6 +55,7 @@ if ($selectedCategory) {
                         <li><a href="logout.php" class="nav-link">Logout</a></li>
                     <?php else: ?>
                         <li><a href="login.php" class="nav-link">Login</a></li>
+                        <li><a href="register.php" class="nav-link">Register</a></li>
                     <?php endif; ?>
                 </ul>
                 <div class="nav-cart">

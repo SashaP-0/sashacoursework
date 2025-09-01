@@ -26,18 +26,19 @@ require_once 'functions.php';
                         <p>Fresh • Local • Sustainable</p>
                     </div>
                 </div>
-                                            <ul class="nav-menu">
-                                <li><a href="index.php" class="nav-link active">Home</a></li>
-                                <li><a href="products.php" class="nav-link">Products</a></li>
-                                <li><a href="about.php" class="nav-link">About</a></li>
-                                <li><a href="delivery.php" class="nav-link">Delivery</a></li>
-                                <?php if (isset($_SESSION['user_id'])): ?>
-                                    <li><a href="account.php" class="nav-link">My Account</a></li>
-                                    <li><a href="logout.php" class="nav-link">Logout</a></li>
-                                <?php else: ?>
-                                    <li><a href="login.php" class="nav-link">Login</a></li>
-                                <?php endif; ?>
-                            </ul>
+                <ul class="nav-menu">
+                    <li><a href="index.php" class="nav-link active">Home</a></li>
+                    <li><a href="products.php" class="nav-link">Products</a></li>
+                    <li><a href="about.php" class="nav-link">About</a></li>
+                    <li><a href="delivery.php" class="nav-link">Delivery</a></li>
+                    <?php if (isset($_SESSION['user_id'])): ?>
+                        <li><a href="account.php" class="nav-link">My Account</a></li>
+                        <li><a href="logout.php" class="nav-link">Logout</a></li>
+                    <?php else: ?>
+                        <li><a href="login.php" class="nav-link">Login</a></li>
+                        <li><a href="register.php" class="nav-link">Register</a></li>
+                    <?php endif; ?>
+                </ul>
                 <div class="nav-cart">
                     <a href="cart.php" class="cart-icon">
                         <span class="cart-count"><?php echo getCartItemCount(); ?></span>
